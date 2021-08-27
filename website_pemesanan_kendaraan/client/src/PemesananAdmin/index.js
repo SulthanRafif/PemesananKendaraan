@@ -10,6 +10,7 @@ function PemesananAdmin() {
 
   const tambahPesanan = () => {
     console.log(namaPemesan);
+    console.log(namaKendaraan);
 
     // Axios.post("http://localhost:3001/tambah_pesanan", {
     //   nama_pemesan: namaPemesan,
@@ -35,8 +36,8 @@ function PemesananAdmin() {
                   setNamaPemesan(e.target.value);
                 }}
               >
-                <option value={1}>Pemesan</option>
-                <option value={10}>Pemesan Dua</option>
+                <option value="1">Pemesan</option>
+                <option value="10">Pemesan Kedua</option>
               </select>
             </div>
           </div>

@@ -12,3 +12,6 @@ Panduan Menjalankan Website
    folder website_pemesanan_kendaraan/server
 
 Username dan Password
+Username: Admin
+password: admin
+

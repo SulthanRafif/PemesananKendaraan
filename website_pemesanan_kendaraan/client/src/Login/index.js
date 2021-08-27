@@ -13,6 +13,8 @@ function Login() {
   const [level, setLevel] = useState("");
 
   const register = () => {
+    console.log(usernameReg);
+    console.log(levelUser);
     Axios.post("http://localhost:3001/register", {
       level_user: levelUser,
       username: usernameReg,
