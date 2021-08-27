@@ -1,20 +1,17 @@
-import React, {useState} from 'react';
-import './App.css';
+import React, { useState } from "react";
+import "./App.css";
 
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
-import Login from '../Login';
+import Login from "../Login";
 
+import DashboardAdmin from "../DashboardAdmin";
+import DaftarPesananAdmin from "../DaftarPesananAdmin";
+import PemesananAdmin from "../PemesananAdmin";
 
-import NavbarAdmin from '../NavbarAdmin';
-import DashboardAdmin from '../DashboardAdmin';
-import DaftarPesananAdmin from '../DaftarPesananAdmin';
-import PemesananAdmin from '../PemesananAdmin';
-
-import NavbarPenyetuju from '../NavbarPenyetuju';
-import DashboardPenyetuju from '../DashboardPenyetuju';
-import DaftarPesananPenyetuju from '../DaftarPesananPenyetuju';
-import Persetujuan from '../Persetujuan';
+import DashboardPenyetuju from "../DashboardPenyetuju";
+import DaftarPesananPenyetuju from "../DaftarPesananPenyetuju";
+import Persetujuan from "../Persetujuan";
 
 function App() {
   return (
@@ -28,22 +25,33 @@ function App() {
           <Route path="/dashboardAdmin" exact component={DashboardAdmin} />
         </Switch>
         <Switch>
-          <Route path="/daftarPesananAdmin" exact component={DaftarPesananAdmin} />
+          <Route
+            path="/daftarPesananAdmin"
+            exact
+            component={DaftarPesananAdmin}
+          />
         </Switch>
         <Switch>
           <Route path="/pemesananAdmin" exact component={PemesananAdmin} />
         </Switch>
 
         <Switch>
-          <Route path="/dashboardPenyetuju" exact component={DashboardPenyetuju} />
+          <Route
+            path="/dashboardPenyetuju"
+            exact
+            component={DashboardPenyetuju}
+          />
         </Switch>
         <Switch>
-          <Route path="/daftarPesananPenyetuju" exact component={DaftarPesananPenyetuju} />
+          <Route
+            path="/daftarPesananPenyetuju"
+            exact
+            component={DaftarPesananPenyetuju}
+          />
         </Switch>
         <Switch>
           <Route path="/persetujuan" exact component={Persetujuan} />
         </Switch>
-
       </Router>
     </div>
   );
