@@ -1,9 +1,13 @@
 import React from 'react'
+import NavbarPenyetuju from '../NavbarPenyetuju'
 
 function DaftarPesananPenyetuju() {
     return (
         <div>
-            Ini Halaman Daftar Pesanan Penyetuju
+            <NavbarPenyetuju/>
+            <div>
+                Ini Halaman Daftar Pesanan Penyetuju
+            </div>
         </div>
     )
 }

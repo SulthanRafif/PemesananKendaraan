@@ -1,9 +1,13 @@
 import React from 'react'
+import NavbarAdmin from '../NavbarAdmin'
 
 function DaftarPesanan() {
     return (
         <div>
-            Ini Halaman Daftar Pesanan
+            <NavbarAdmin />
+            <div>
+            Ini Halaman Daftar Pesanan Admin
+            </div>
         </div>
     )
 }

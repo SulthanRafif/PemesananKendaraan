@@ -1,9 +1,13 @@
 import React from 'react'
+import NavbarPenyetuju from '../NavbarPenyetuju'
 
 function DashboardPenyetuju() {
     return (
         <div>
-            Ini Halaman Dashboard Penyetuju
+            <NavbarPenyetuju/>
+            <div>
+                Ini Halaman Dashboard Penyetuju
+            </div>
         </div>
     )
 }
