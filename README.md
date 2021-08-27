@@ -1,4 +1,4 @@
-PemesananKendaraan
+Website Pemesanan Kendaraan
 
 Framework untuk client : ReactJS
 Framework untuk server : NodeJS
@@ -22,4 +22,4 @@ password: admin
 
 Mohon maaf apabila website belum jadi, dikarenakan masih dalam tahap pengembangan dan saya membutuhkan waktu lebih lama untuk melakukan pengembangan website ini.
 
-Saya ucapkan terimakasih kepada kakak-kakak dari Sekawan Media karena sudah memberi kesempatan saya untuk mengikuti tes untuk posisi Backend Developer di Sekawan Media
+Saya ucapkan terimakasih kepada kakak-kakak dari Sekawan Media karena sudah memberi kesempatan saya untuk mengikuti tes untuk posisi Backend Developer di Sekawan Media.
