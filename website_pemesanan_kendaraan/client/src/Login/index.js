@@ -37,6 +37,8 @@ function Login() {
           setLevel("Penyetuju 1");
         } else if (response.data[0].LEVEL_USER == 2) {
           setLevel("Penyetuju 2");
+        } else if (response.data[0].LEVEL_USER == 3) {
+          setLevel("Admin");
         }
       }
     });
@@ -79,9 +81,10 @@ function Login() {
               setLevelUser(e.target.value);
             }}
           >
-            <option value="0">Admin</option>
+            <option value="0">Pemesan</option>
             <option value="1">Penyetuju 1</option>
             <option value="2">Penyetuju 2</option>
+            <option value="3">Admin</option>
           </select>
         </div>
         <br />

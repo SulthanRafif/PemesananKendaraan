@@ -73,7 +73,7 @@ function NavbarAdmin() {
             <div class="modal-content">
               <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalLongTitle">
-                  Logout Admin Coba
+                  Logout Admin
                 </h5>
                 <button
                   type="button"

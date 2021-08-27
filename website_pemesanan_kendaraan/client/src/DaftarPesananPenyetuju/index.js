@@ -6,6 +6,15 @@ import { Link } from "react-router-dom";
 import NavbarPenyetuju from "../NavbarAdmin";
 
 function DaftarPesananPenyetuju() {
+  const [searchTerm, setSearchTerm] = useState("");
+
+  const [daftarPemesanan, setDaftarPemesanan] = useState([]);
+
+  useEffect(() => {
+    Axios.get("http://localhost:3001/api/get_pesanan").then((response) => {
+      setDaftarPemesanan(response.data);
+    });
+  }, []);
   return (
     <div>
       <NavbarPenyetuju />
@@ -16,20 +25,12 @@ function DaftarPesananPenyetuju() {
         <div>
           <input
             type="text"
-            placeholder="Cari Nama Profil Peneliti..."
+            placeholder="Cari Nama Pemesan..."
             style={style.kolomPencarian}
-          />
-        </div>
-        <div>
-          <Link
-            to={{
-              pathname: "/tambahProfilDosen",
+            onChange={(event) => {
+              setSearchTerm(event.target.value);
             }}
-          >
-            <button style={style.tombolTambah} class="btn btn-success">
-              Lakukan Pemesanan
-            </button>
-          </Link>
+          />
         </div>
         <table class="content-table" style={style.fontTabel}>
           <thead>
@@ -37,28 +38,52 @@ function DaftarPesananPenyetuju() {
               <th>No</th>
               <th>Nama Pemesan</th>
               <th>Nama Kendaraan</th>
-              <th>Penyetuju 1</th>
-              <th>Penyetuju 2</th>
+              <th>Nama Penyetuju 1</th>
+              <th>Status Persetujuan Penyetuju 1</th>
+              <th>Nama Penyetuju 2</th>
+              <th>Status Persetujuan Penyetuju 2</th>
               <th>Proses</th>
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>1.</td>
-              <td>Asep Sepeda</td>
-              <td>Lamborgini</td>
-              <td>Andra Akmal Maulidani</td>
-              <td>Sulthan Rafif</td>
-              <td>
-                <Link
-                  to={{
-                    pathname: "/detailPemesananAdmin",
-                  }}
-                >
-                  <button class="btn btn-info">Lihat Detail Pemesanan</button>
-                </Link>
-              </td>
-            </tr>
+            {daftarPemesanan
+              // eslint-disable-next-line
+              .filter((val) => {
+                if (searchTerm === "") {
+                  return val;
+                } else if (
+                  val.NAMA_PEMESAN.toLowerCase().includes(
+                    searchTerm.toLowerCase()
+                  )
+                ) {
+                  return val;
+                }
+              })
+              .map((val, key) => {
+                return (
+                  <tr class="active-row text-center" key={key}>
+                    <td>{val.NOMOR}</td>
+                    <td>{val.NAMA_PEMESAN}</td>
+                    <td>{val.NAMA_KENDARAAN}</td>
+                    <td>{val.NAMA_PENYETUJU_1}</td>
+                    <td>{val.STATUS_PERSETUJUAN_1}</td>
+                    <td>{val.NAMA_PENYETUJU_2}</td>
+                    <td>{val.STATUS_PERSETUJUAN_2}</td>
+                    <td>
+                      <Link
+                        to={{
+                          pathname: "/persetujuan",
+                          aboutProps: val.ID_PEMESAN,
+                        }}
+                      >
+                        <button class="btn btn-info">
+                          Berikan Persetujuan
+                        </button>
+                      </Link>
+                    </td>
+                  </tr>
+                );
+              })}
           </tbody>
         </table>
       </div>

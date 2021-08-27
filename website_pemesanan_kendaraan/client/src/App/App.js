@@ -8,6 +8,7 @@ import Login from "../Login";
 import DashboardAdmin from "../DashboardAdmin";
 import DaftarPesananAdmin from "../DaftarPesananAdmin";
 import PemesananAdmin from "../PemesananAdmin";
+import DetailPemesanan from "../DetailPemesanan";
 
 import DashboardPenyetuju from "../DashboardPenyetuju";
 import DaftarPesananPenyetuju from "../DaftarPesananPenyetuju";
@@ -33,6 +34,9 @@ function App() {
         </Switch>
         <Switch>
           <Route path="/pemesananAdmin" exact component={PemesananAdmin} />
+        </Switch>
+        <Switch>
+          <Route path="/detailPemesanan" exact component={DetailPemesanan} />
         </Switch>
 
         <Switch>
