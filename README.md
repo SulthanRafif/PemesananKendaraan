@@ -16,9 +16,11 @@ Panduan Menjalankan Website
 4. Jalankan client dengan mengetikkan perintah npm start melalui terminal pada directory
    folder website_pemesanan_kendaraan/server
 
-Username dan Password
-Username: Admin
-password: admin
+Username:
+Admin,
+
+password:
+admin
 
 Mohon maaf apabila website belum jadi, dikarenakan masih dalam tahap pengembangan dan saya membutuhkan waktu lebih lama untuk melakukan pengembangan website ini.
 
