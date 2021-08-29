@@ -33,13 +33,13 @@ function Login() {
         setLoginStatus(response.data.message);
       } else {
         setLoginStatus(response.data[0].NAMA_USER);
-        if (response.data[0].LEVEL_USER == 0) {
+        if (response.data[0].LEVEL_USER === 0) {
           setLevel("Pemesan");
-        } else if (response.data[0].LEVEL_USER == 1) {
+        } else if (response.data[0].LEVEL_USER === 1) {
           setLevel("Penyetuju 1");
-        } else if (response.data[0].LEVEL_USER == 2) {
+        } else if (response.data[0].LEVEL_USER === 2) {
           setLevel("Penyetuju 2");
-        } else if (response.data[0].LEVEL_USER == 3) {
+        } else if (response.data[0].LEVEL_USER === 3) {
           setLevel("Admin");
         }
       }

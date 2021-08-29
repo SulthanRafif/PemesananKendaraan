@@ -50,7 +50,7 @@ app.post("/login", (req, res) => {
 
 app.get("/api/get_pesanan", (req, res) => {
   const sqlUpdate =
-    "SELECT DISTINCT (ROW_NUMBER() OVER (ORDER BY daftar_pemesan.ID_PEMESANAN)) AS NOMOR, daftar_pemesan.ID_PEMESANAN AS ID_PEMESAN, daftar_pemesan.NAMA_USER AS NAMA_PEMESAN, daftar_pemesan.NAMA_KENDARAAN as NAMA_KENDARAAN, daftar_persetujuan_1.NAMA_PENYETUJU_1 AS NAMA_PENYETUJU_1, daftar_persetujuan_1.PERSETUJUAN_1 AS STATUS_PERSETUJUAN_1, daftar_persetujuan_2.NAMA_PENYETUJU_2 AS NAMA_PENYETUJU_2,daftar_persetujuan_2.PERSETUJUAN_2 AS STATUS_PERSETUJUAN_2 FROM pemesanan INNER JOIN daftar_pemesan ON pemesanan.ID_PEMESANAN = daftar_pemesan.ID_PEMESANAN INNER JOIN kendaraan ON kendaraan.ID_KENDARAAN = pemesanan.ID_KENDARAAN INNER JOIN daftar_persetujuan_1 ON pemesanan.ID_PENYETUJU_1 = daftar_persetujuan_1.ID_PENYETUJU_1 INNER JOIN daftar_persetujuan_2 ON pemesanan.ID_PENYETUJU_2 = daftar_persetujuan_2.ID_PENYETUJU_2;";
+    "SELECT (ROW_NUMBER() OVER (ORDER BY daftar_pemesan.ID_PEMESANAN)) AS NOMOR, daftar_pemesan.ID_PEMESANAN AS ID_PEMESAN, daftar_pemesan.NAMA_USER AS NAMA_PEMESAN, daftar_pemesan.NAMA_KENDARAAN as NAMA_KENDARAAN, daftar_persetujuan_1.NAMA_PENYETUJU_1 AS NAMA_PENYETUJU_1, daftar_persetujuan_1.PERSETUJUAN_1 AS STATUS_PERSETUJUAN_1, daftar_persetujuan_2.NAMA_PENYETUJU_2 AS NAMA_PENYETUJU_2,daftar_persetujuan_2.PERSETUJUAN_2 AS STATUS_PERSETUJUAN_2 FROM daftar_pemesan INNER JOIN daftar_persetujuan_1 ON daftar_pemesan.ID_PEMESANAN = daftar_persetujuan_1.ID_PEMESANAN INNER JOIN daftar_persetujuan_2 ON daftar_pemesan.ID_PEMESANAN = daftar_persetujuan_2.ID_PEMESANAN;";
   db.query(sqlUpdate, (err, result) => {
     res.send(result);
   });
@@ -61,10 +61,19 @@ app.post("/tambah_pesanan", (req, res) => {
   const nama_kendaraan = req.body.nama_kendaraan;
   const nama_penyetuju_1 = req.body.nama_penyetuju_1;
   const nama_penyetuju_2 = req.body.nama_penyetuju_2;
+  const status_persetujuan_1 = req.body.status_persetujuan_1;
+  const status_persetujuan_2 = req.body.status_persetujuan_2;
 
   db.query(
-    "INSERT INTO pemesanan (ID_PEMESAN, ID_KENDARAAN, ID_PENYETUJU_1, ID_PENYETUJU_2, STATUS_PERSETUJUAN_1, STATUS_PERSETUJUAN_2) VALUES (?,?,?,?,1,1);",
-    [nama_pemesan, nama_kendaraan, nama_penyetuju_1, nama_penyetuju_2],
+    "INSERT INTO pemesanan (ID_PEMESAN, ID_KENDARAAN, ID_PENYETUJU_1, ID_PENYETUJU_2, STATUS_PERSETUJUAN_1, STATUS_PERSETUJUAN_2) VALUES (?,?,?,?,?,?);",
+    [
+      nama_pemesan,
+      nama_kendaraan,
+      nama_penyetuju_1,
+      nama_penyetuju_2,
+      status_persetujuan_1,
+      status_persetujuan_2,
+    ],
     (err, result) => {
       console.log(err);
     }
