@@ -19,7 +19,7 @@ function DaftarPesanan() {
     <div>
       <NavbarAdmin />
       <div style={style.isi}>
-        <div style={style.judul} class="text-center">
+        <div style={style.judul} className="text-center">
           Daftar Pemesanan Kendaraan
         </div>
         <div>
@@ -38,12 +38,12 @@ function DaftarPesanan() {
               pathname: "/pemesananAdmin",
             }}
           >
-            <button style={style.tombolTambah} class="btn btn-success">
+            <button style={style.tombolTambah} className="btn btn-success">
               Lakukan Pemesanan
             </button>
           </Link>
         </div>
-        <table class="content-table" style={style.fontTabel}>
+        <table className="content-table" style={style.fontTabel}>
           <thead>
             <tr>
               <th>No</th>
@@ -72,7 +72,7 @@ function DaftarPesanan() {
               })
               .map((val, key) => {
                 return (
-                  <tr class="active-row text-center" key={key}>
+                  <tr className="active-row text-center" key={key}>
                     <td>{val.NOMOR}</td>
                     <td>{val.NAMA_PEMESAN}</td>
                     <td>{val.NAMA_KENDARAAN}</td>
@@ -87,7 +87,7 @@ function DaftarPesanan() {
                           aboutProps: val.ID_PEMESAN,
                         }}
                       >
-                        <button class="btn btn-info">
+                        <button className="btn btn-info">
                           Lihat Detail Pemesanan
                         </button>
                       </Link>
