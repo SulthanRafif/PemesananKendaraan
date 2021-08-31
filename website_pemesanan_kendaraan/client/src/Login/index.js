@@ -1,5 +1,6 @@
 import React from "react";
 import Axios from "axios";
+// import Auth from "../Auth/Auth";
 
 const initialState = {
   usernameReg: "",
@@ -156,6 +157,7 @@ export default class Login extends React.Component {
   render() {
     return (
       <div className="App text-center">
+        {/* <Auth setAuth={"true"} /> */}
         <div className="Login">
           <form onSubmit={this.handleSubmitDaftar}>
             <h1>Register</h1>
