@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 import "./App.css";
 
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-
-import Login from "../Login";
 import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
+
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+// import Login from "../Login";
+import BelajarLogin from "../BelajarLogin/BelajarLogin";
 
 import DashboardAdmin from "../DashboardAdmin";
 import DaftarPesananAdmin from "../DaftarPesananAdmin";
@@ -19,37 +20,39 @@ function App() {
   const [isAuth, setIsAuth] = useState(false);
 
   return (
-    <div>
-      <Router>
-        <Switch>
-          <Route path="/" exact component={Login} />
-          <ProtectedRoute
-            path="/dashboardAdmin"
-            component={DashboardAdmin}
-            isAuth={isAuth}
-          />
-          {/* <Route path="/dashboardAdmin" exact component={DashboardAdmin} /> */}
-          <Route
-            path="/daftarPesananAdmin"
-            exact
-            component={DaftarPesananAdmin}
-          />
-          <Route path="/pemesananAdmin" exact component={PemesananAdmin} />
-          <Route path="/detailPemesanan" exact component={DetailPemesanan} />
-          <Route
-            path="/dashboardPenyetuju"
-            exact
-            component={DashboardPenyetuju}
-          />
-          <Route
-            path="/daftarPesananPenyetuju"
-            exact
-            component={DaftarPesananPenyetuju}
-          />
-          <Route path="/persetujuan" exact component={Persetujuan} />
-        </Switch>
-      </Router>
-    </div>
+    <Router>
+      <Switch>
+        {/* <Route path="/">
+          <Login />
+        </Route> */}
+        {/* <Route path="/" exact component={Login} /> */}
+        <Route path="/" exact component={BelajarLogin} />
+        {/* <Route path="/dashboardAdmin" exact component={DashboardAdmin} /> */}
+        <ProtectedRoute
+          path="/dashboardAdmin"
+          component={DashboardAdmin}
+          isAuth={isAuth}
+        />
+        <Route
+          path="/daftarPesananAdmin"
+          exact
+          component={DaftarPesananAdmin}
+        />
+        <Route path="/pemesananAdmin" exact component={PemesananAdmin} />
+        <Route path="/detailPemesanan" exact component={DetailPemesanan} />
+        <Route
+          path="/dashboardPenyetuju"
+          exact
+          component={DashboardPenyetuju}
+        />
+        <Route
+          path="/daftarPesananPenyetuju"
+          exact
+          component={DaftarPesananPenyetuju}
+        />
+        <Route path="/persetujuan" exact component={Persetujuan} />
+      </Switch>
+    </Router>
   );
 }
 

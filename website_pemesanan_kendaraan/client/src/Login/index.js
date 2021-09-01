@@ -157,7 +157,6 @@ export default class Login extends React.Component {
   render() {
     return (
       <div className="App text-center">
-        {/* <Auth setAuth={"true"} /> */}
         <div className="Login">
           <form onSubmit={this.handleSubmitDaftar}>
             <h1>Register</h1>
