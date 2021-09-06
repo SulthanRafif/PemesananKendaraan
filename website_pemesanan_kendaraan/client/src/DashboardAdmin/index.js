@@ -1,15 +1,13 @@
-import React from 'react'
-import NavbarAdmin from '../NavbarAdmin'
+import React from "react";
+// import NavbarAdmin from "../NavbarAdmin";
 
 function DashboardAdmin() {
-    return (
-        <div>
-            <NavbarAdmin/>
-            <div>
-               Ini Halaman Dashboard Admin
-            </div>
-        </div>
-    )
+  return (
+    <div>
+      {/* <NavbarAdmin /> */}
+      <div>Ini Halaman Dashboard Admin</div>
+    </div>
+  );
 }
 
-export default DashboardAdmin
+export default DashboardAdmin;

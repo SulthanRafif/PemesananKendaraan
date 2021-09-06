@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from "react";
 import Axios from "axios";
+import { useHistory } from "react-router-dom";
 
 const Login = ({ setIsAuth }) => {
+  const history = useHistory();
   const [usernameReg, setUsernameReg] = useState("");
   const [passwordReg, setPasswordReg] = useState("");
   const [levelUser, setLevelUser] = useState("");
@@ -43,7 +45,7 @@ const Login = ({ setIsAuth }) => {
         setLoginStatus(response.data[0].NAMA_USER);
         setLevel(response.data[0].LEVEL_USER);
         setIsAuth(true);
-        // window.location.href = "/dashboardAdmin";
+        history.push("/dashboardAdmin");
       }
     });
   };

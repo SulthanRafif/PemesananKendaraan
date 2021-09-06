@@ -3,7 +3,7 @@ import style from "./styles";
 import Axios from "axios";
 import "./styles.css";
 import { Link } from "react-router-dom";
-import NavbarAdmin from "../NavbarAdmin";
+// import NavbarAdmin from "../NavbarAdmin";
 
 function DaftarPesanan() {
   const [searchTerm, setSearchTerm] = useState("");
@@ -17,7 +17,7 @@ function DaftarPesanan() {
   }, []);
   return (
     <div>
-      <NavbarAdmin />
+      {/* <NavbarAdmin /> */}
       <div style={style.isi}>
         <div style={style.judul} className="text-center">
           Daftar Pemesanan Kendaraan
