@@ -7,7 +7,8 @@ import { SidebarData } from "./SidebarData";
 import "./styles.css";
 import { IconContext } from "react-icons";
 
-function NavbarAdmin() {
+function NavbarAdmin(props) {
+  console.log("Id User Dari NavbarAdmin: ", props.idUser);
   const [sidebar, setSidebar] = useState(false);
 
   const showSidebar = () => setSidebar(!sidebar);

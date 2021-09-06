@@ -1,7 +1,8 @@
 import React from "react";
 // import NavbarAdmin from "../NavbarAdmin";
 
-function DashboardAdmin() {
+function DashboardAdmin(props) {
+  console.log("Data Id User Dari DashboardAdmin: ", props.idUser);
   return (
     <div>
       {/* <NavbarAdmin /> */}

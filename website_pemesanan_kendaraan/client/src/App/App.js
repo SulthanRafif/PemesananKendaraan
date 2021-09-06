@@ -29,18 +29,26 @@ const App = () => {
   };
   console.log("Level User Login: ", level);
 
+  const [IdUser, setIdUser] = useState("");
+
+  const eventCreateIdUser = (IdnyaUser) => {
+    setIdUser(IdnyaUser);
+  };
+  console.log("Id User: ", IdUser);
+
   return (
     <Router>
       {isAuth && level === 3 ? (
-        <NavbarAdmin />
+        <NavbarAdmin idUser={IdUser} />
       ) : (isAuth && level === 1) || (isAuth && level === 2) ? (
-        <NavbarPenyetuju />
+        <NavbarPenyetuju idUser={IdUser} />
       ) : (
         <Login
           setIsAuth={() => {
             setIsAuth(true);
           }}
           onCreateLevel={eventCreateLevel}
+          onCreateIdUser={eventCreateIdUser}
         />
       )}
       <Switch>
@@ -49,7 +57,9 @@ const App = () => {
           exact
           component={DashboardAdmin}
           isAuth={isAuth}
+          dataIdUser={IdUser}
         />
+        {/* <Route path="/dashboardAdmin" exact component={DashboardAdmin} /> */}
         <ProtectedRoute
           path="/daftarPesananAdmin"
           exact
@@ -73,6 +83,7 @@ const App = () => {
           exact
           component={DashboardPenyetuju}
           isAuth={isAuth}
+          dataIdUser={IdUser}
         />
         <ProtectedRoute
           path="/daftarPesananPenyetuju"

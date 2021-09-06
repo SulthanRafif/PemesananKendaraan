@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import Axios from "axios";
 import { useHistory } from "react-router-dom";
 
-const Login = ({ setIsAuth, onCreateLevel }) => {
+const Login = ({ setIsAuth, onCreateLevel, onCreateIdUser }) => {
   const history = useHistory();
   const [usernameReg, setUsernameReg] = useState("");
   const [passwordReg, setPasswordReg] = useState("");
@@ -46,8 +46,12 @@ const Login = ({ setIsAuth, onCreateLevel }) => {
         setLevel(response.data[0].LEVEL_USER);
         setIsAuth(true);
         onCreateLevel(response.data[0].LEVEL_USER);
+        onCreateIdUser(response.data[0].ID_USER);
         if (response.data[0].LEVEL_USER === 3) {
-          history.push("/dashboardAdmin");
+          history.push({
+            pathname: "/dashboardAdmin",
+            state: { detail: response.data[0].ID_USER },
+          });
         } else if (
           response.data[0].LEVEL_USER === 1 ||
           response.data[0].LEVEL_USER === 2
