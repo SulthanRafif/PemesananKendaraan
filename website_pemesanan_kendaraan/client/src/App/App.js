@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import "./App.css";
 
-import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
+import ProtectedRoute from "../ProtectedRoute";
 
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-// import Login from "../Login";
-import BelajarLogin from "../BelajarLogin/BelajarLogin";
+import Login from "../Login";
+// import BelajarLogin from "../BelajarLogin/BelajarLogin";
 
 import DashboardAdmin from "../DashboardAdmin";
 import DaftarPesananAdmin from "../DaftarPesananAdmin";
@@ -18,21 +18,27 @@ import Persetujuan from "../Persetujuan";
 
 function App() {
   const [isAuth, setIsAuth] = useState(false);
+  console.log("Set Is Auth Dari App: ", isAuth);
 
   return (
     <Router>
       <Switch>
-        {/* <Route path="/">
-          <Login />
-        </Route> */}
+        <Route path="/login">
+          <Login
+            setIsAuth={() => {
+              setIsAuth(true);
+              console.log("Set Is Auth Dari Login: ", isAuth);
+            }}
+          />
+        </Route>
         {/* <Route path="/" exact component={Login} /> */}
-        <Route path="/" exact component={BelajarLogin} />
-        {/* <Route path="/dashboardAdmin" exact component={DashboardAdmin} /> */}
         <ProtectedRoute
           path="/dashboardAdmin"
+          exact
           component={DashboardAdmin}
           isAuth={isAuth}
         />
+        {/* <Route path="/dashboardAdmin" exact component={DashboardAdmin} /> */}
         <Route
           path="/daftarPesananAdmin"
           exact
