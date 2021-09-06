@@ -3,7 +3,6 @@ import style from "./styles";
 import Axios from "axios";
 import "./styles.css";
 import { Link } from "react-router-dom";
-import NavbarPenyetuju from "../NavbarAdmin";
 
 function DaftarPesananPenyetuju() {
   const [searchTerm, setSearchTerm] = useState("");
@@ -17,9 +16,8 @@ function DaftarPesananPenyetuju() {
   }, []);
   return (
     <div>
-      <NavbarPenyetuju />
       <div style={style.isi}>
-        <div style={style.judul} class="text-center">
+        <div style={style.judul} className="text-center">
           Daftar Pemesanan Kendaraan
         </div>
         <div>
@@ -32,7 +30,7 @@ function DaftarPesananPenyetuju() {
             }}
           />
         </div>
-        <table class="content-table" style={style.fontTabel}>
+        <table className="content-table" style={style.fontTabel}>
           <thead>
             <tr>
               <th>No</th>
@@ -61,7 +59,7 @@ function DaftarPesananPenyetuju() {
               })
               .map((val, key) => {
                 return (
-                  <tr class="active-row text-center" key={key}>
+                  <tr className="active-row text-center" key={key}>
                     <td>{val.NOMOR}</td>
                     <td>{val.NAMA_PEMESAN}</td>
                     <td>{val.NAMA_KENDARAAN}</td>
@@ -76,7 +74,7 @@ function DaftarPesananPenyetuju() {
                           aboutProps: val.ID_PEMESAN,
                         }}
                       >
-                        <button class="btn btn-info">
+                        <button className="btn btn-info">
                           Berikan Persetujuan
                         </button>
                       </Link>

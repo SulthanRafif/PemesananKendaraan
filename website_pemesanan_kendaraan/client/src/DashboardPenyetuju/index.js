@@ -1,15 +1,11 @@
-import React from 'react'
-import NavbarPenyetuju from '../NavbarPenyetuju'
+import React from "react";
 
 function DashboardPenyetuju() {
-    return (
-        <div>
-            <NavbarPenyetuju/>
-            <div>
-                Ini Halaman Dashboard Penyetuju
-            </div>
-        </div>
-    )
+  return (
+    <div>
+      <div>Ini Halaman Dashboard Penyetuju</div>
+    </div>
+  );
 }
 
-export default DashboardPenyetuju
+export default DashboardPenyetuju;

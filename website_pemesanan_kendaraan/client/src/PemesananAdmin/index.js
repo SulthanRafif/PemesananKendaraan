@@ -1,5 +1,4 @@
 import React from "react";
-import NavbarAdmin from "../NavbarAdmin";
 import Axios from "axios";
 
 const initialState = {
@@ -59,7 +58,6 @@ export default class PemesananAdmin extends React.Component {
   render() {
     return (
       <div>
-        <NavbarAdmin />
         <form onSubmit={this.handleSubmit}>
           <div className="container-fluid row mt-3">
             <div className="col-md-3"></div>

@@ -16,35 +16,34 @@ import DashboardPenyetuju from "../DashboardPenyetuju";
 import DaftarPesananPenyetuju from "../DaftarPesananPenyetuju";
 import Persetujuan from "../Persetujuan";
 import NavbarAdmin from "../NavbarAdmin";
+import NavbarPenyetuju from "../NavbarPenyetuju";
 
-function App() {
+const App = () => {
   const [isAuth, setIsAuth] = useState(false);
   console.log("Set Is Auth Dari App: ", isAuth);
 
+  const [level, setLevel] = useState("");
+
+  const eventCreateLevel = (levelnya) => {
+    setLevel(levelnya);
+  };
+  console.log("Level User Login: ", level);
+
   return (
     <Router>
-      {!isAuth ? (
+      {isAuth && level === 3 ? (
+        <NavbarAdmin />
+      ) : (isAuth && level === 1) || (isAuth && level === 2) ? (
+        <NavbarPenyetuju />
+      ) : (
         <Login
           setIsAuth={() => {
             setIsAuth(true);
-            console.log("Set Is Auth Dari Login: ", isAuth);
           }}
+          onCreateLevel={eventCreateLevel}
         />
-      ) : (
-        <NavbarAdmin />
       )}
       <Switch>
-        {/* <Route path="/">
-          {!isAuth ? console.log("Belum Login") : <DashboardAdmin />}
-        </Route> */}
-        {/* <Route path="/login">
-          <Login
-            setIsAuth={() => {
-              setIsAuth(true);
-              console.log("Set Is Auth Dari Login: ", isAuth);
-            }}
-          />
-        </Route> */}
         <ProtectedRoute
           path="/dashboardAdmin"
           exact
@@ -57,27 +56,39 @@ function App() {
           component={DaftarPesananAdmin}
           isAuth={isAuth}
         />
-        {/* <Route
-          path="/daftarPesananAdmin"
+        <ProtectedRoute
+          path="/pemesananAdmin"
           exact
-          component={DaftarPesananAdmin}
-        /> */}
-        <Route path="/pemesananAdmin" exact component={PemesananAdmin} />
-        <Route path="/detailPemesanan" exact component={DetailPemesanan} />
-        <Route
+          component={PemesananAdmin}
+          isAuth={isAuth}
+        />
+        <ProtectedRoute
+          path="/detailPemesanan"
+          exact
+          component={DetailPemesanan}
+          isAuth={isAuth}
+        />
+        <ProtectedRoute
           path="/dashboardPenyetuju"
           exact
           component={DashboardPenyetuju}
+          isAuth={isAuth}
         />
-        <Route
+        <ProtectedRoute
           path="/daftarPesananPenyetuju"
           exact
           component={DaftarPesananPenyetuju}
+          isAuth={isAuth}
         />
-        <Route path="/persetujuan" exact component={Persetujuan} />
+        <ProtectedRoute
+          path="/persetujuan"
+          exact
+          component={Persetujuan}
+          isAuth={isAuth}
+        />
       </Switch>
     </Router>
   );
-}
+};
 
 export default App;

@@ -47,7 +47,7 @@ function NavbarPenyetuju() {
                   type="button"
                   data-toggle="modal"
                   data-target="#exampleModalCenter"
-                  class="styleButton"
+                  className="styleButton"
                 >
                   <RiIcons.RiLogoutBoxFill />
                   <span>Logout Admin</span>
@@ -58,39 +58,39 @@ function NavbarPenyetuju() {
         </IconContext.Provider>
       </div>
       <div
-        class="modal fade"
+        className="modal fade"
         id="exampleModalCenter"
-        tabindex="-1"
+        tabIndex="-1"
         role="dialog"
         aria-labelledby="exampleModalCenterTitle"
         aria-hidden="true"
       >
         <div
-          class="modal-dialog modal-lg modal-dialog-centered"
+          className="modal-dialog modal-lg modal-dialog-centered"
           role="document"
         >
-          <div class="modal-content">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLongTitle">
+          <div className="modal-content">
+            <div className="modal-content">
+              <div className="modal-header">
+                <h5 className="modal-title" id="exampleModalLongTitle">
                   Logout Penyetuju
                 </h5>
                 <button
                   type="button"
-                  class="close"
+                  className="close"
                   data-dismiss="modal"
                   aria-label="Close"
                 >
                   <span aria-hidden="true">&times;</span>
                 </button>
               </div>
-              <div class="modal-body">
+              <div className="modal-body">
                 Apakah anda ingin logout sebagai Penyetuju?
               </div>
-              <div class="modal-footer">
+              <div className="modal-footer">
                 <button
                   type="button"
-                  class="btn btn-secondary"
+                  className="btn btn-secondary"
                   data-dismiss="modal"
                 >
                   Tidak
@@ -99,7 +99,7 @@ function NavbarPenyetuju() {
                   <button
                     type="button"
                     onClick={logout}
-                    class="btn btn-primary"
+                    className="btn btn-primary"
                     data-dismiss="modal"
                   >
                     Iya

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import Axios from "axios";
 import { useHistory } from "react-router-dom";
 
-const Login = ({ setIsAuth }) => {
+const Login = ({ setIsAuth, onCreateLevel }) => {
   const history = useHistory();
   const [usernameReg, setUsernameReg] = useState("");
   const [passwordReg, setPasswordReg] = useState("");
@@ -45,7 +45,15 @@ const Login = ({ setIsAuth }) => {
         setLoginStatus(response.data[0].NAMA_USER);
         setLevel(response.data[0].LEVEL_USER);
         setIsAuth(true);
-        history.push("/dashboardAdmin");
+        onCreateLevel(response.data[0].LEVEL_USER);
+        if (response.data[0].LEVEL_USER === 3) {
+          history.push("/dashboardAdmin");
+        } else if (
+          response.data[0].LEVEL_USER === 1 ||
+          response.data[0].LEVEL_USER === 2
+        ) {
+          history.push("/dashboardPenyetuju");
+        }
       }
     });
   };
