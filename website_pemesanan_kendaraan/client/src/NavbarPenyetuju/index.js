@@ -6,15 +6,18 @@ import { Link } from "react-router-dom";
 import { SidebarData } from "./SidebarData";
 import "./styles.css";
 import { IconContext } from "react-icons";
+import Logout from "../Logout";
 
-function NavbarPenyetuju() {
+function NavbarPenyetuju({ idUser: IdUser, setIsAuth, onCreateIdUser }) {
+  console.log("Id User Dari NavbarPenyetuju: ", IdUser);
+  const eventCreateIsAuthnya = (isAuthnyaya) => {
+    setIsAuth(isAuthnyaya);
+    onCreateIdUser(null);
+  };
+
   const [sidebar, setSidebar] = useState(false);
 
   const showSidebar = () => setSidebar(!sidebar);
-
-  const logout = () => {
-    //
-  };
 
   return (
     <div>
@@ -50,66 +53,17 @@ function NavbarPenyetuju() {
                   className="styleButton"
                 >
                   <RiIcons.RiLogoutBoxFill />
-                  <span>Logout Admin</span>
+                  <span>Logout Penyetuju</span>
                 </button>
               </li>
             </ul>
           </nav>
         </IconContext.Provider>
       </div>
-      <div
-        className="modal fade"
-        id="exampleModalCenter"
-        tabIndex="-1"
-        role="dialog"
-        aria-labelledby="exampleModalCenterTitle"
-        aria-hidden="true"
-      >
-        <div
-          className="modal-dialog modal-lg modal-dialog-centered"
-          role="document"
-        >
-          <div className="modal-content">
-            <div className="modal-content">
-              <div className="modal-header">
-                <h5 className="modal-title" id="exampleModalLongTitle">
-                  Logout Penyetuju
-                </h5>
-                <button
-                  type="button"
-                  className="close"
-                  data-dismiss="modal"
-                  aria-label="Close"
-                >
-                  <span aria-hidden="true">&times;</span>
-                </button>
-              </div>
-              <div className="modal-body">
-                Apakah anda ingin logout sebagai Penyetuju?
-              </div>
-              <div className="modal-footer">
-                <button
-                  type="button"
-                  className="btn btn-secondary"
-                  data-dismiss="modal"
-                >
-                  Tidak
-                </button>
-                <Link to="/">
-                  <button
-                    type="button"
-                    onClick={logout}
-                    className="btn btn-primary"
-                    data-dismiss="modal"
-                  >
-                    Iya
-                  </button>
-                </Link>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+      <Logout
+        onCreateIsAuthnya={eventCreateIsAuthnya}
+        levelnyaUser={"Penyetuju"}
+      />
     </div>
   );
 }

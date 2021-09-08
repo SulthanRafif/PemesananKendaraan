@@ -1,6 +1,6 @@
 import React from "react";
 
-function Logout({ onCreateIsAuthnya }) {
+function Logout({ onCreateIsAuthnya, levelnyaUser: LevelnyaUser }) {
   const logout = () => {
     onCreateIsAuthnya(false);
   };
@@ -21,7 +21,7 @@ function Logout({ onCreateIsAuthnya }) {
           <div className="modal-content">
             <div className="modal-header">
               <h5 className="modal-title" id="exampleModalLongTitle">
-                Logout Admin
+                Logout {LevelnyaUser}
               </h5>
               <button
                 type="button"
@@ -33,7 +33,7 @@ function Logout({ onCreateIsAuthnya }) {
               </button>
             </div>
             <div className="modal-body">
-              Apakah anda ingin logout sebagai Admin?
+              Apakah anda ingin logout sebagai {LevelnyaUser}?
             </div>
             <div className="modal-footer">
               <button

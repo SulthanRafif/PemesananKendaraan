@@ -47,7 +47,13 @@ const App = () => {
           onCreateIdUser={eventCreateIdUser}
         />
       ) : (isAuth && level === 1) || (isAuth && level === 2) ? (
-        <NavbarPenyetuju idUser={IdUser} />
+        <NavbarPenyetuju
+          idUser={IdUser}
+          setIsAuth={() => {
+            setIsAuth(false);
+          }}
+          onCreateIdUser={eventCreateIdUser}
+        />
       ) : (
         <Login
           setIsAuth={() => {
@@ -65,7 +71,6 @@ const App = () => {
           isAuth={isAuth}
           dataIdUser={IdUser}
         />
-        {/* <Route path="/dashboardAdmin" exact component={DashboardAdmin} /> */}
         <ProtectedRoute
           path="/daftarPesananAdmin"
           exact

@@ -62,7 +62,10 @@ function NavbarAdmin({ idUser: IdUser, setIsAuth, onCreateIdUser }) {
           </nav>
         </IconContext.Provider>
       </div>
-      <Logout onCreateIsAuthnya={eventCreateIsAuthnya} />
+      <Logout
+        onCreateIsAuthnya={eventCreateIsAuthnya}
+        levelnyaUser={"Penyetuju"}
+      />
     </div>
   );
 }
