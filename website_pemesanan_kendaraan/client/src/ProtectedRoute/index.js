@@ -1,9 +1,10 @@
 import React from "react";
 import { Route, Redirect } from "react-router-dom";
 
-// eslint-disable-next-line
 function ProtectedRoute({
+  // eslint-disable-next-line
   dataIdUser: dataIdUser,
+  // eslint-disable-next-line
   isAuth: isAuth,
   component: Component,
   ...rest

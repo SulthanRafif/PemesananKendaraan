@@ -5,7 +5,8 @@ import "./styles.css";
 import { Link } from "react-router-dom";
 // import NavbarAdmin from "../NavbarAdmin";
 
-function DaftarPesanan() {
+function DaftarPesanan(props) {
+  console.log("Data Id User Dari DaftarPesananAdmin: ", props.idUser);
   const [searchTerm, setSearchTerm] = useState("");
 
   const [daftarPemesanan, setDaftarPemesanan] = useState([]);

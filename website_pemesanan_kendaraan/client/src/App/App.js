@@ -3,7 +3,7 @@ import "./App.css";
 
 import ProtectedRoute from "../ProtectedRoute";
 
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { BrowserRouter as Router, Switch } from "react-router-dom";
 import Login from "../Login";
 // import BelajarLogin from "../BelajarLogin/BelajarLogin";
 
@@ -39,7 +39,13 @@ const App = () => {
   return (
     <Router>
       {isAuth && level === 3 ? (
-        <NavbarAdmin idUser={IdUser} />
+        <NavbarAdmin
+          idUser={IdUser}
+          setIsAuth={() => {
+            setIsAuth(false);
+          }}
+          onCreateIdUser={eventCreateIdUser}
+        />
       ) : (isAuth && level === 1) || (isAuth && level === 2) ? (
         <NavbarPenyetuju idUser={IdUser} />
       ) : (
@@ -65,6 +71,7 @@ const App = () => {
           exact
           component={DaftarPesananAdmin}
           isAuth={isAuth}
+          dataIdUser={IdUser}
         />
         <ProtectedRoute
           path="/pemesananAdmin"
