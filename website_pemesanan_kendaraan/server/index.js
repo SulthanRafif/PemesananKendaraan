@@ -56,6 +56,24 @@ app.get("/api/get_pesanan", (req, res) => {
   });
 });
 
+app.get("/api/get_pesanan_penyetuju_1/:id", (req, res) => {
+  const id = req.params.id;
+  const sqlUpdate =
+    "SELECT (ROW_NUMBER() OVER (ORDER BY daftar_pemesan.ID_PEMESANAN)) AS NOMOR, daftar_pemesan.ID_PEMESANAN AS ID_PEMESAN, daftar_pemesan.NAMA_USER AS NAMA_PEMESAN, daftar_pemesan.NAMA_KENDARAAN as NAMA_KENDARAAN, daftar_persetujuan_1.NAMA_PENYETUJU_1 AS NAMA_PENYETUJU_1, daftar_persetujuan_1.PERSETUJUAN_1 AS STATUS_PERSETUJUAN_1, daftar_persetujuan_2.NAMA_PENYETUJU_2 AS NAMA_PENYETUJU_2,daftar_persetujuan_2.PERSETUJUAN_2 AS STATUS_PERSETUJUAN_2 FROM daftar_pemesan INNER JOIN daftar_persetujuan_1 ON daftar_pemesan.ID_PEMESANAN = daftar_persetujuan_1.ID_PEMESANAN INNER JOIN daftar_persetujuan_2 ON daftar_pemesan.ID_PEMESANAN = daftar_persetujuan_2.ID_PEMESANAN WHERE ID_PENYETUJU_1 = ? AND daftar_persetujuan_1.PERSETUJUAN_1 = 'Diajukan';";
+  db.query(sqlUpdate, id, (err, result) => {
+    res.send(result);
+  });
+});
+
+app.get("/api/get_pesanan_penyetuju_2/:id", (req, res) => {
+  const id = req.params.id;
+  const sqlUpdate =
+    "SELECT (ROW_NUMBER() OVER (ORDER BY daftar_pemesan.ID_PEMESANAN)) AS NOMOR, daftar_pemesan.ID_PEMESANAN AS ID_PEMESAN, daftar_pemesan.NAMA_USER AS NAMA_PEMESAN, daftar_pemesan.NAMA_KENDARAAN as NAMA_KENDARAAN, daftar_persetujuan_1.NAMA_PENYETUJU_1 AS NAMA_PENYETUJU_1, daftar_persetujuan_1.PERSETUJUAN_1 AS STATUS_PERSETUJUAN_1, daftar_persetujuan_2.NAMA_PENYETUJU_2 AS NAMA_PENYETUJU_2,daftar_persetujuan_2.PERSETUJUAN_2 AS STATUS_PERSETUJUAN_2 FROM daftar_pemesan INNER JOIN daftar_persetujuan_1 ON daftar_pemesan.ID_PEMESANAN = daftar_persetujuan_1.ID_PEMESANAN INNER JOIN daftar_persetujuan_2 ON daftar_pemesan.ID_PEMESANAN = daftar_persetujuan_2.ID_PEMESANAN WHERE ID_PENYETUJU_2 = ? AND daftar_persetujuan_1.PERSETUJUAN_1 = 'Disetujui' AND daftar_persetujuan_2.PERSETUJUAN_2 = 'Diajukan';";
+  db.query(sqlUpdate, id, (err, result) => {
+    res.send(result);
+  });
+});
+
 app.post("/tambah_pesanan", (req, res) => {
   const nama_pemesan = req.body.nama_pemesan;
   const nama_kendaraan = req.body.nama_kendaraan;

@@ -102,6 +102,8 @@ const App = () => {
           exact
           component={DaftarPesananPenyetuju}
           isAuth={isAuth}
+          dataIdUser={IdUser}
+          levelUser={level}
         />
         <ProtectedRoute
           path="/persetujuan"

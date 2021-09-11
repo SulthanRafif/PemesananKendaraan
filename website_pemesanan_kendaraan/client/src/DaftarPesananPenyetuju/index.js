@@ -4,15 +4,32 @@ import Axios from "axios";
 import "./styles.css";
 import { Link } from "react-router-dom";
 
-function DaftarPesananPenyetuju() {
+function DaftarPesananPenyetuju(props) {
+  console.log("Data Id User Dari DaftarPemesananPenyetuju: ", props.idUser);
+  console.log(
+    "Data Level User Dari DaftarPemesananPenyetuju: ",
+    props.levelUser
+  );
   const [searchTerm, setSearchTerm] = useState("");
 
   const [daftarPemesanan, setDaftarPemesanan] = useState([]);
 
   useEffect(() => {
-    Axios.get("http://localhost:3001/api/get_pesanan").then((response) => {
-      setDaftarPemesanan(response.data);
-    });
+    if (props.levelUser === 1) {
+      console.log("Daftar Pesanan untuk Penyetuju Satu ditampilkan");
+      Axios.get(
+        `http://localhost:3001/api/get_pesanan_penyetuju_1/${props.idUser}`
+      ).then((response) => {
+        setDaftarPemesanan(response.data);
+      });
+    } else {
+      console.log("Daftar Pesanan untuk Penyetuju Dua ditampilkan");
+      Axios.get(
+        `http://localhost:3001/api/get_pesanan_penyetuju_2/${props.idUser}`
+      ).then((response) => {
+        setDaftarPemesanan(response.data);
+      });
+    }
   }, []);
   return (
     <div>
@@ -58,7 +75,11 @@ function DaftarPesananPenyetuju() {
                 }
               })
               .map((val, key) => {
-                return (
+                return val.NAMA_PEMESAN === null ? (
+                  <div style={style.pemberitahuan} class="text-center">
+                    Semua pemesanan sudah disetujui
+                  </div>
+                ) : (
                   <tr className="active-row text-center" key={key}>
                     <td>{val.NOMOR}</td>
                     <td>{val.NAMA_PEMESAN}</td>

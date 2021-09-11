@@ -6,6 +6,7 @@ function ProtectedRoute({
   dataIdUser: dataIdUser,
   // eslint-disable-next-line
   isAuth: isAuth,
+  levelUser: LevelUser,
   component: Component,
   ...rest
 }) {
@@ -15,7 +16,7 @@ function ProtectedRoute({
       {...rest}
       render={(props) => {
         if (isAuth) {
-          return <Component idUser={dataIdUser} />;
+          return <Component idUser={dataIdUser} levelUser={LevelUser} />;
         } else {
           return (
             <Redirect to={{ pathname: "/", state: { from: props.location } }} />
