@@ -5,6 +5,7 @@ import "./styles.css";
 import { Link } from "react-router-dom";
 
 function DaftarPesananPenyetuju(props) {
+  //
   console.log("Data Id User Dari DaftarPemesananPenyetuju: ", props.idUser);
   console.log(
     "Data Level User Dari DaftarPemesananPenyetuju: ",
@@ -30,7 +31,7 @@ function DaftarPesananPenyetuju(props) {
         setDaftarPemesanan(response.data);
       });
     }
-  }, []);
+  }, [props.idUser, props.levelUser]);
   return (
     <div>
       <div style={style.isi}>
