@@ -1,28 +1,47 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import * as yup from "yup";
 import Axios from "axios";
 
-const initialState = {
-  namaPemesan: "",
-  namaKendaraan: "",
-  namaPenyetuju1: "",
-  namaPenyetuju2: "",
-  statusPersetujuan1: "1",
-  statusPersetujuan2: "",
-};
+const schema = yup.object().shape({
+  namaPemesan: yup.string().required("Nama Pemesan Harus Diisi"),
+  namaKendaraan: yup.string().required("Nama Kendaraan Harus Diisi"),
+  namaPenyetuju1: yup.string().required("Nama Penyetuju 1 Harus Diisi"),
+  namaPenyetuju2: yup.string().required("Nama Penyetuju 2 Harus Diisi"),
+  statusPersetujuan1: yup.string().required("Status Persetujuan 1 Harus Diisi"),
+  statusPersetujuan2: yup.string().required("Status Persetujuan 2 Harus Diisi"),
+});
 
-export default class Persetujuan extends React.Component {
-  state = initialState;
+function Persetujuan(props) {
+  const [submit, setInfoSubmit] = useState("");
+  useEffect(() => {
+    console.log("Props Persetujuan: ", props.location);
+  }, []);
 
-  componentDidMount = () => {
-    console.log("Component Did Mount Persetujuan");
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({
+    resolver: yupResolver(schema),
+  });
+
+  const onSubmit = (data) => {
+    if (
+      !errors.namaPemesan &&
+      !errors.namaKendaraan &&
+      !errors.namaPenyetuju1 &&
+      !errors.namaPenyetuju2 &&
+      !errors.statusPersetujuan1 &&
+      !errors.statusPersetujuan2
+    ) {
+      console.log("Data Submit Persetujuan: ", data);
+    }
   };
 
-  handleChange = (event) => {
-    const isCheckbox = event.target.type === "checkbox";
-    this.setState({
-      [event.target.name]: isCheckbox
-        ? event.target.checked
-        : event.target.value,
-    });
-  };
+  console.log("Error Submit Persetujuan", errors);
+  return <div>Persetujuan</div>;
 }
+
+export default Persetujuan;

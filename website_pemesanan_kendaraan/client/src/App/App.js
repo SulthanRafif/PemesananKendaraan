@@ -3,7 +3,7 @@ import "./App.css";
 
 import ProtectedRoute from "../ProtectedRoute";
 
-import { BrowserRouter as Router, Switch } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Login from "../Login";
 // import BelajarLogin from "../BelajarLogin/BelajarLogin";
 
@@ -111,6 +111,7 @@ const App = () => {
           component={Persetujuan}
           isAuth={isAuth}
         />
+        {/* <Route path="/persetujuan" exact component={Persetujuan} /> */}
       </Switch>
     </Router>
   );

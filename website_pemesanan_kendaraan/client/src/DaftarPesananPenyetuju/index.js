@@ -93,7 +93,7 @@ function DaftarPesananPenyetuju(props) {
                       <Link
                         to={{
                           pathname: "/persetujuan",
-                          aboutProps: val.ID_PEMESAN,
+                          namaPemesan: val.NAMA_PEMESAN,
                         }}
                       >
                         <button className="btn btn-info">
