@@ -105,13 +105,13 @@ const App = () => {
           dataIdUser={IdUser}
           levelUser={level}
         />
-        <ProtectedRoute
+        {/* <ProtectedRoute
           path="/persetujuan"
           exact
           component={Persetujuan}
           isAuth={isAuth}
-        />
-        {/* <Route path="/persetujuan" exact component={Persetujuan} /> */}
+        /> */}
+        <Route path="/persetujuan" exact component={Persetujuan} />
       </Switch>
     </Router>
   );
