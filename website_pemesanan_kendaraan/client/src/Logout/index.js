@@ -33,7 +33,7 @@ function Logout({ onCreateIsAuthnya, levelnyaUser: LevelnyaUser }) {
               </button>
             </div>
             <div className="modal-body">
-              Apakah anda ingin logout sebagai {LevelnyaUser}?
+              Apakah anda ingin Logout sebagai {LevelnyaUser}?
             </div>
             <div className="modal-footer">
               <button

@@ -4,8 +4,7 @@ import "./App.css";
 import ProtectedRoute from "../ProtectedRoute";
 
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import Login from "../Login";
-// import BelajarLogin from "../BelajarLogin/BelajarLogin";
+import LoginRegister from "../LoginRegister";
 
 import DashboardAdmin from "../DashboardAdmin";
 import DaftarPesananAdmin from "../DaftarPesananAdmin";
@@ -17,6 +16,7 @@ import DaftarPesananPenyetuju from "../DaftarPesananPenyetuju";
 import Persetujuan from "../Persetujuan";
 import NavbarAdmin from "../NavbarAdmin";
 import NavbarPenyetuju from "../NavbarPenyetuju";
+import DaftarPesanan from "../DaftarPesanan";
 
 const App = () => {
   const [isAuth, setIsAuth] = useState(false);
@@ -55,7 +55,7 @@ const App = () => {
           onCreateIdUser={eventCreateIdUser}
         />
       ) : (
-        <Login
+        <LoginRegister
           setIsAuth={() => {
             setIsAuth(true);
           }}
@@ -89,6 +89,13 @@ const App = () => {
           exact
           component={DetailPemesanan}
           isAuth={isAuth}
+        />
+        <ProtectedRoute
+          path="/daftarPesanan"
+          exact
+          component={DaftarPesanan}
+          isAuth={isAuth}
+          dataIdUser={IdUser}
         />
         <ProtectedRoute
           path="/dashboardPenyetuju"

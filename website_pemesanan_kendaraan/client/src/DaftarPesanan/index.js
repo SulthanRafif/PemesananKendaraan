@@ -5,8 +5,8 @@ import "./styles.css";
 import { Link } from "react-router-dom";
 // import NavbarAdmin from "../NavbarAdmin";
 
-function DaftarPesananAdmin(props) {
-  console.log("Data Id User Dari DaftarPesananAdmin: ", props.idUser);
+function DaftarPesanan(props) {
+  console.log("Data Id User Dari DaftarPesanan: ", props.idUser);
   const [searchTerm, setSearchTerm] = useState("");
 
   const [daftarPemesanan, setDaftarPemesanan] = useState([]);
@@ -18,7 +18,6 @@ function DaftarPesananAdmin(props) {
   }, []);
   return (
     <div>
-      {/* <NavbarAdmin /> */}
       <div style={style.isi}>
         <div style={style.judul} className="text-center">
           Daftar Pemesanan Kendaraan
@@ -32,17 +31,6 @@ function DaftarPesananAdmin(props) {
               setSearchTerm(event.target.value);
             }}
           />
-        </div>
-        <div>
-          <Link
-            to={{
-              pathname: "/pemesananAdmin",
-            }}
-          >
-            <button style={style.tombolTambah} className="btn btn-success">
-              Lakukan Pemesanan
-            </button>
-          </Link>
         </div>
         <table className="content-table" style={style.fontTabel}>
           <thead>
@@ -88,11 +76,8 @@ function DaftarPesananAdmin(props) {
                           aboutProps: val.ID_PEMESAN,
                         }}
                       >
-                        <button className="btn btn-primary">
-                          Edit Pemesanan
-                        </button>
-                        <button className="btn btn-danger">
-                          Hapus Pemesanan
+                        <button className="btn btn-info">
+                          Lihat Detail Pemesanan
                         </button>
                       </Link>
                     </td>
@@ -106,4 +91,4 @@ function DaftarPesananAdmin(props) {
   );
 }
 
-export default DaftarPesananAdmin;
+export default DaftarPesanan;

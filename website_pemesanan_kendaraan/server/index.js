@@ -74,6 +74,58 @@ app.get("/api/get_pesanan_penyetuju_2/:id", (req, res) => {
   });
 });
 
+app.get("/api/get_nama_pemesan", (req, res) => {
+  const sqlUpdate =
+    "SELECT user.ID_USER, user.NAMA_USER FROM user WHERE user.LEVEL_USER = 0";
+  db.query(sqlUpdate, (err, result) => {
+    res.send(result);
+  });
+});
+
+app.get("/api/get_nama_kendaraan", (req, res) => {
+  const sqlUpdate =
+    "SELECT kendaraan.ID_KENDARAAN, kendaraan.NAMA_KENDARAAN FROM kendaraan";
+  db.query(sqlUpdate, (err, result) => {
+    res.send(result);
+  });
+});
+
+app.get("/api/get_user_penyetuju_1", (req, res) => {
+  const sqlUpdate =
+    "SELECT user.ID_USER, user.NAMA_USER FROM user WHERE user.LEVEL_USER = 1";
+  db.query(sqlUpdate, (err, result) => {
+    res.send(result);
+  });
+});
+
+app.get("/api/get_user_penyetuju_2", (req, res) => {
+  const sqlUpdate =
+    "SELECT user.ID_USER, user.NAMA_USER FROM user WHERE user.LEVEL_USER = 2";
+  db.query(sqlUpdate, (err, result) => {
+    res.send(result);
+  });
+});
+
+app.post("/api/update_persetujuan_1", (req, res) => {
+  const statusPersetujuan1 = req.body.statusPersetujuan1;
+  const idPemesanan = req.body.idPemesanan;
+  const sqlUpdate =
+    "UPDATE pemesanan SET pemesanan.STATUS_PERSETUJUAN_1 = ? WHERE pemesanan.ID_PEMESANAN = ?";
+  db.query(sqlUpdate, [statusPersetujuan1, idPemesanan], (err, result) => {
+    if (err) console.log(err);
+  });
+});
+
+app.post("/api/update_persetujuan_2", (req, res) => {
+  const statusPersetujuan1 = req.body.statusPersetujuan1;
+  const idPemesanan = req.body.idPemesanan;
+  const sqlUpdate =
+    "UPDATE pemesanan SET pemesanan.STATUS_PERSETUJUAN_2 = ? WHERE pemesanan.ID_PEMESANAN = ?";
+  db.query(sqlUpdate, [statusPersetujuan1, idPemesanan], (err, result) => {
+    if (err) console.log(err);
+  });
+});
+
 app.post("/tambah_pesanan", (req, res) => {
   const nama_pemesan = req.body.nama_pemesan;
   const nama_kendaraan = req.body.nama_kendaraan;

@@ -8,6 +8,11 @@ const initialState = {
   namaPenyetuju2: "3",
   statusPersetujuan1: "1",
   statusPersetujuan2: "1",
+
+  daftarNamaPemesan: [],
+  daftarMobil: [],
+  daftarPenyetuju1: [],
+  daftarPenyetuju2: [],
 };
 
 export default class PemesananAdmin extends React.Component {
@@ -15,6 +20,34 @@ export default class PemesananAdmin extends React.Component {
 
   componentDidMount = () => {
     console.log("Component Did Mount");
+    Axios.get("http://localhost:3001/api/get_nama_pemesan").then((res) => {
+      console.log(res.data);
+      this.setState({
+        daftarNamaPemesan: res.data,
+      });
+      console.log("daftar nama pemesan", this.state.daftarNamaPemesan);
+    });
+    Axios.get("http://localhost:3001/api/get_nama_kendaraan").then((res) => {
+      console.log(res.data);
+      this.setState({
+        daftarMobil: res.data,
+      });
+      console.log("daftar nama kendaraan", this.state.daftarMobil);
+    });
+    Axios.get("http://localhost:3001/api/get_user_penyetuju_1").then((res) => {
+      console.log(res.data);
+      this.setState({
+        daftarPenyetuju1: res.data,
+      });
+      console.log("daftar nama penyetuju 1", this.state.daftarPenyetuju1);
+    });
+    Axios.get("http://localhost:3001/api/get_user_penyetuju_2").then((res) => {
+      console.log(res.data);
+      this.setState({
+        daftarPenyetuju2: res.data,
+      });
+      console.log("daftar nama penyetuju 1", this.state.daftarPenyetuju2);
+    });
   };
 
   handleChange = (event) => {
@@ -51,11 +84,14 @@ export default class PemesananAdmin extends React.Component {
       nama_penyetuju_2: this.state.namaPenyetuju2,
       status_persetujuan_1: this.state.statusPersetujuan1,
       status_persetujuan_2: this.state.statusPersetujuan2,
-    });
-    this.validate();
+    }).then(this.validate());
   };
 
   render() {
+    console.log("daftar nama pemesan render", this.state.daftarNamaPemesan);
+    console.log("daftar nama kendaraan render", this.state.daftarMobil);
+    console.log("daftar nama penyetuju 1 render", this.state.daftarPenyetuju1);
+    console.log("daftar nama penyetuju 2 render", this.state.daftarPenyetuju2);
     return (
       <div>
         <form onSubmit={this.handleSubmit}>
@@ -70,8 +106,11 @@ export default class PemesananAdmin extends React.Component {
                     value={this.state.namaPemesan}
                     name="namaPemesan"
                   >
-                    <option value="1">Pemesan</option>
-                    <option value="10">Pemesan Kedua</option>
+                    {this.state.daftarNamaPemesan.map((pemesan) => (
+                      <option key={pemesan.ID_USER} value={pemesan.ID_USER}>
+                        {pemesan.NAMA_USER}
+                      </option>
+                    ))}
                   </select>
                 </div>
               </div>
@@ -83,8 +122,14 @@ export default class PemesananAdmin extends React.Component {
                     value={this.state.namaKendaraan}
                     name="namaKendaraan"
                   >
-                    <option value="1">Toyota Corolla</option>
-                    <option value="2">Toyota Supra</option>
+                    {this.state.daftarMobil.map((kendaraan) => (
+                      <option
+                        key={kendaraan.ID_KENDARAAN}
+                        value={kendaraan.ID_KENDARAAN}
+                      >
+                        {kendaraan.NAMA_KENDARAAN}
+                      </option>
+                    ))}
                   </select>
                 </div>
               </div>
@@ -96,7 +141,11 @@ export default class PemesananAdmin extends React.Component {
                     value={this.state.namaPenyetuju1}
                     name="namaPenyetuju1"
                   >
-                    <option value="2">Penyetuju Satu</option>
+                    {this.state.daftarPenyetuju1.map((setuju1) => (
+                      <option key={setuju1.ID_USER} value={setuju1.ID_USER}>
+                        {setuju1.NAMA_USER}
+                      </option>
+                    ))}
                   </select>
                 </div>
               </div>
@@ -108,8 +157,11 @@ export default class PemesananAdmin extends React.Component {
                     value={this.state.namaPenyetuju2}
                     name="namaPenyetuju2"
                   >
-                    <option value="3">Penyetuju Dua</option>
-                    <option value="8">Penyetuju Dua B</option>
+                    {this.state.daftarPenyetuju2.map((setuju2) => (
+                      <option key={setuju2.ID_USER} value={setuju2.ID_USER}>
+                        {setuju2.NAMA_USER}
+                      </option>
+                    ))}
                   </select>
                 </div>
               </div>

@@ -5,7 +5,6 @@ import "./styles.css";
 import { Link } from "react-router-dom";
 
 function DaftarPesananPenyetuju(props) {
-  //
   console.log("Data Id User Dari DaftarPemesananPenyetuju: ", props.idUser);
   console.log(
     "Data Level User Dari DaftarPemesananPenyetuju: ",
@@ -36,7 +35,7 @@ function DaftarPesananPenyetuju(props) {
     <div>
       <div style={style.isi}>
         <div style={style.judul} className="text-center">
-          Daftar Pemesanan Kendaraan
+          Daftar Persetujuan Pemesanan Kendaraan
         </div>
         <div>
           <input
@@ -93,7 +92,15 @@ function DaftarPesananPenyetuju(props) {
                       <Link
                         to={{
                           pathname: "/persetujuan",
+                          levelUser: props.levelUser,
+                          idUser: props.idUser,
+                          idPemesanan: val.ID_PEMESAN,
                           namaPemesan: val.NAMA_PEMESAN,
+                          namaKendaraan: val.NAMA_KENDARAAN,
+                          namaPenyetuju1: val.NAMA_PENYETUJU_1,
+                          statusPersetujuan1: val.STATUS_PERSETUJUAN_1,
+                          namaPenyetuju2: val.NAMA_PENYETUJU_2,
+                          statusPersetujuan2: val.STATUS_PERSETUJUAN_2,
                         }}
                       >
                         <button className="btn btn-info">

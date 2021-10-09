@@ -10,8 +10,14 @@ export const SidebarData = [
     cName: "nav-text",
   },
   {
-    title: "Daftar Pemesanan",
+    title: "Daftar Persetujuan",
     path: "/daftarPesananPenyetuju",
+    icon: <BsIcons.BsTable />,
+    cName: "nav-text",
+  },
+  {
+    title: "Daftar Pemesanan",
+    path: "/daftarPesanan",
     icon: <BsIcons.BsTable />,
     cName: "nav-text",
   },
