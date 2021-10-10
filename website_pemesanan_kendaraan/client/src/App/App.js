@@ -10,6 +10,7 @@ import DashboardAdmin from "../DashboardAdmin";
 import DaftarPesananAdmin from "../DaftarPesananAdmin";
 import PemesananAdmin from "../PemesananAdmin";
 import DetailPemesanan from "../DetailPemesanan";
+import EditPesanan from "../EditPesanan";
 
 import DashboardPenyetuju from "../DashboardPenyetuju";
 import DaftarPesananPenyetuju from "../DaftarPesananPenyetuju";
@@ -70,6 +71,7 @@ const App = () => {
           component={DashboardAdmin}
           isAuth={isAuth}
           dataIdUser={IdUser}
+          levelUser={level}
         />
         <ProtectedRoute
           path="/daftarPesananAdmin"
@@ -77,18 +79,23 @@ const App = () => {
           component={DaftarPesananAdmin}
           isAuth={isAuth}
           dataIdUser={IdUser}
+          levelUser={level}
         />
         <ProtectedRoute
           path="/pemesananAdmin"
           exact
           component={PemesananAdmin}
           isAuth={isAuth}
+          dataIdUser={IdUser}
+          levelUser={level}
         />
         <ProtectedRoute
           path="/detailPemesanan"
           exact
           component={DetailPemesanan}
           isAuth={isAuth}
+          dataIdUser={IdUser}
+          levelUser={level}
         />
         <ProtectedRoute
           path="/daftarPesanan"
@@ -96,6 +103,7 @@ const App = () => {
           component={DaftarPesanan}
           isAuth={isAuth}
           dataIdUser={IdUser}
+          levelUser={level}
         />
         <ProtectedRoute
           path="/dashboardPenyetuju"
@@ -103,6 +111,7 @@ const App = () => {
           component={DashboardPenyetuju}
           isAuth={isAuth}
           dataIdUser={IdUser}
+          levelUser={level}
         />
         <ProtectedRoute
           path="/daftarPesananPenyetuju"
@@ -112,13 +121,19 @@ const App = () => {
           dataIdUser={IdUser}
           levelUser={level}
         />
-        {/* <ProtectedRoute
-          path="/persetujuan"
+        <ProtectedRoute
+          path="/editPesanan"
           exact
-          component={Persetujuan}
+          component={EditPesanan}
           isAuth={isAuth}
-        /> */}
-        <Route path="/persetujuan" exact component={Persetujuan} />
+          dataIdUser={IdUser}
+          levelUser={level}
+        />
+        {(isAuth && level === 1) || (isAuth && level === 2) ? (
+          <Route path="/persetujuan" exact component={Persetujuan} />
+        ) : (
+          <></>
+        )}
       </Switch>
     </Router>
   );

@@ -12,7 +12,6 @@ const LoginRegister = ({ setIsAuth, onCreateLevel, onCreateIdUser }) => {
   const eventSetLogin = () => {
     setIsRegister(false);
   };
-
   return (
     <div className="App text-center">
       {!register ? (
@@ -24,17 +23,13 @@ const LoginRegister = ({ setIsAuth, onCreateLevel, onCreateIdUser }) => {
             onCreateLevel={onCreateLevel}
             onCreateIdUser={onCreateIdUser}
           />
-          <a href="#" onClick={eventSetRegister}>
-            Register Akun
-          </a>
+          <a onClick={eventSetRegister}>Register Akun</a>
         </div>
       ) : (
         <div>
           <Register />
           <br />
-          <a href="#" onClick={eventSetLogin}>
-            Login Akun
-          </a>
+          <a onClick={eventSetLogin}>Login Akun</a>
         </div>
       )}
     </div>

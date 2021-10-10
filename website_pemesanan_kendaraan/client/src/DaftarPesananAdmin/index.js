@@ -3,6 +3,7 @@ import style from "./styles";
 import Axios from "axios";
 import "./styles.css";
 import { Link } from "react-router-dom";
+import DeletePesanan from "../deletePesanan";
 // import NavbarAdmin from "../NavbarAdmin";
 
 function DaftarPesananAdmin(props) {
@@ -84,17 +85,24 @@ function DaftarPesananAdmin(props) {
                     <td>
                       <Link
                         to={{
-                          pathname: "/detailPemesanan",
-                          aboutProps: val.ID_PEMESAN,
+                          pathname: "/editPesanan",
+                          idPemesan: val.ID_PEMESAN,
+                          namaPemesan: val.NAMA_PEMESAN,
+                          namaKendaraan: val.NAMA_KENDARAAN,
                         }}
                       >
                         <button className="btn btn-primary">
                           Edit Pemesanan
                         </button>
-                        <button className="btn btn-danger">
-                          Hapus Pemesanan
-                        </button>
                       </Link>
+                      <button
+                        type="button"
+                        data-toggle="modal"
+                        data-target="#modalDeletePesanan"
+                        className="btn btn-danger"
+                      >
+                        Hapus Pemesanan
+                      </button>
                     </td>
                   </tr>
                 );
@@ -102,6 +110,7 @@ function DaftarPesananAdmin(props) {
           </tbody>
         </table>
       </div>
+      <DeletePesanan />
     </div>
   );
 }

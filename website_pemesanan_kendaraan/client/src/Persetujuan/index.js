@@ -85,17 +85,13 @@ function Persetujuan(props) {
                 id="statusPersetujuan"
                 {...register("statusPersetujuan", { required: true })}
                 name="statusPersetujuan"
-                defaultValue={1}
+                defaultValue="1"
               >
                 <option value="1">Belum Disetujui</option>
                 <option value="2">Setuju</option>
               </select>
             </div>
-            <button
-              onClick={onSubmit}
-              className="btn btn-primary mt-3"
-              type="submit"
-            >
+            <button className="btn btn-primary mt-3" type="submit">
               Submit
             </button>
             <div></div>
